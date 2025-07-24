@@ -1,0 +1,35 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+    <div class="container text-center">
+
+        <h1 style="color: blue;">this is my portfolio</h1>
+
+        {% load static %}
+
+        <a href="{% static 'portfolio\Report amiraliHomayouni.pdf' %}">my static Report from Mr khani exam</a>
+
+        <h2>my static image</h2>
+
+        <img src="{% static 'portfolio\background.png' %}" height="50%" width="50%">
+
+        {% for project in projects %}
+
+        <h3>{{ project.title }}</h3>
+        <img src="{{ project.image.url }}" alt="" style="height: 25%; width: 25%;">
+        
+        {% if project.url %}
+
+        <br>
+        <a href="{{ project.url }}">Link</a>
+
+        {% endif %}
+        <p>{{ project.description }}</p>
+
+        <br>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
